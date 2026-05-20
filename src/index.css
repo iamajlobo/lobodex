@@ -1,5 +1,14 @@
+@import "tailwindcss";
 
 
-.nav-bg {
-  background-color: #01091D;
+@theme {
+  --color-deep-blue: #01091D;
+}
+
+
+.bg-hero {
+  background-image: url("./assets/images/hero.png");
+  background-size: fit;
+  background-position: center;
+  background-repeat: no-repeat;
 }
