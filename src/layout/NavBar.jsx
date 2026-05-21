@@ -10,8 +10,8 @@ const NavBar = () => {
     const activeLink = ({isActive}) => (isActive) ? 'p-5 bg-gray-200/10 border-b-2   border-red-500':'p-5';
 
     return (
-        <header className='bg-black text-white sticky top-0'>
-            <nav className="max-w-6xl mx-auto flex justify-between items-center">
+        <header className='bg-black text-white sticky top-0 z-50'>
+            <nav className="max-w-7xl mx-auto flex justify-between items-center">
                 <img className='w-40' src={logo} alt="Logo" />
                 <Menu onClick={() => setIsOpen(prev => !prev)} className='block lg:hidden mr-3'/>
                 <ul className='hidden lg:block'>
@@ -22,7 +22,7 @@ const NavBar = () => {
                     <NavLink className={activeLink} to='/favorites'>Favorites</NavLink>
                     <NavLink className={activeLink} to='/about'>About</NavLink>
                 </ul>
-                <div className='hidden lg:block'>
+                <div className='hidden lg:block pr-5'>
                     <form className='w-full border border-gray-700 rounded-sm p-1 flex items-center'>
                         <input className='outline-none' type="text" name="search" placeholder='Search Pokemon....'/>
                         <Search className='hover:cursor-pointer' size={20} opacity={0.4}/>

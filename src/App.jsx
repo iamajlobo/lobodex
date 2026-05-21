@@ -3,7 +3,7 @@ import HomePage from "./pages/HomePage";
 import Layout from "./layout/Layout";
 import PokemonPage from "./pages/PokemonPage";
 import RegionsPage from "./pages/RegionsPage";
-import TypesPage from "./pages/Types";
+import TypesPage from "./pages/TypesPage";
 import FavoritesPage from "./pages/FavoritesPage";
 import AboutPage from "./pages/AboutPage";
 

@@ -3,9 +3,9 @@
 
 const PokemonPage = () => {
     return (
-        <section>
-            
-        </section>
+        <section className="bg-white">
+             
+           </section>
     );
 }
 

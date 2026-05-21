@@ -1,10 +1,13 @@
+import AboutCard from "../components/AboutCard";
+import AboutIntro from "../components/AboutIntro";
 
 
 
 const AboutPage = () => {
     return (
-        <section>
-            
+        <section className="bg-white">
+            <AboutIntro/>
+            <AboutCard/>
         </section>
     );
 }
