@@ -1,8 +1,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 
-const Pagination = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+const Pagination = ({setPage}) => {
   const [startPage, setStartPage] = useState(1);
   const pageGroup = 5;
   const totalPages = Math.ceil(1025 / 24);
@@ -31,7 +30,7 @@ const Pagination = () => {
           const pageNumber = startPage + index;
           return (
             <button
-              onClick={() => setCurrentPage(pageNumber)}
+              onClick={() => setPage(pageNumber)}
               className="px-4 py-3 border border-gray-100 shadow-md rounded-md hover:cursor-pointer hover:bg-red-500 hover:text-white"
               key={index}
             >

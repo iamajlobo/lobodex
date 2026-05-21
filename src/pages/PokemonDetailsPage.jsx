@@ -5,51 +5,97 @@ import pokeball from "../assets/images/pokeball.png";
 import PokemonStats from "../components/PokemonStats";
 import CategoryCard from "../components/CategoryCard";
 import EvolutionLine from "../components/EvolutionLine";
+import { useEffect, useState } from "react";
+import { fetchDescription, fetchPokemon } from "../services/pokeapi";
 
 const PokemonDetailsPage = () => {
+  const [loading, setLoading] = useState(false);
+  const [pokemon, setPokemon] = useState({});
+  const [desc, setDesc] = useState({});
+  const [stats, setStats] = useState({});
   const { pokemonName } = useParams();
 
+  useEffect(() => {
+    try {
+      const loadPokemon = async () => {
+        setLoading(true);
+        const result = await fetchPokemon(pokemonName);
+        const characteristics = await fetchDescription(result.id);
+
+        console.log(result);
+        setPokemon(result);
+        setDesc(characteristics);
+        setStats(result.stats);
+      };
+
+      loadPokemon();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  }, [pokemonName]);
+
   return (
-    <section className="bg-white">
-      <div className="max-w-7xl mx-auto p-5">
-        <div className="border-b border-gray-200 py-2 flex gap-2 items-center">
-          <NavLink className="hover:underline" to="/">
-            Home
-          </NavLink>
-          <p>{">"}</p>
-          <NavLink className="hover:underline" to="/pokemons">
-            Pokemons
-          </NavLink>
-          <p>{">"}</p>
-          <NavLink className="hover:underline" to="/data">
-            {pokemonName.slice(0, 1).toUpperCase() + pokemonName.slice(1)}
-          </NavLink>
-          <p>{">"}</p>
-        </div>
-        <div className="mb-3 border-b border-gray-200">
-          <PokemonDescription
-            pokemonId="0006"
-            pokemonName="Charizard"
-            types={["fire", "flying"]}
-            description="A pokemon from around the world. Ang Pogi Mo lodi hahahhahha."
-            height={200}
-            weight={50}
-            abilities={["Blaze", "Fireball"]}
-            img={pokeball}
-          />
-        </div>
-        <div className="grid md:grid-cols-2 py-5 gap-3">
-            <PokemonStats hp={78} attack={84} defense={89} spAttack={109} spDefense={67} speed={100}/>
-            <CategoryCard category="Flame Pokemon" species="Flame Pokemon" type={["fire","flying"]} generation="I" region="Kanto"/>
-        </div>
-        <div className="py-5">
-            <h2 className="font-bold mb-5 text-center">Evolution Line</h2>
-            <div className="md:flex justify-center">
-                <EvolutionLine/>
+    <>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <section className="bg-white">
+          <div className="max-w-7xl mx-auto p-5">
+            <div className="border-b border-gray-200 py-2 flex gap-2 items-center">
+              <NavLink className="hover:underline" to="/">
+                Home
+              </NavLink>
+              <p>{">"}</p>
+              <NavLink className="hover:underline" to="/pokemons">
+                Pokemons
+              </NavLink>
+              <p>{">"}</p>
+              <NavLink className="hover:underline" to="/data">
+                {pokemonName.slice(0, 1).toUpperCase() + pokemonName.slice(1)}
+              </NavLink>
+              <p>{">"}</p>
             </div>
-        </div>
-      </div>
-    </section>
+            <div className="mb-3 border-b border-gray-200">
+              <PokemonDescription
+                pokemonId={pokemon.id}
+                pokemonName={pokemon.name}
+                types={pokemon.types}
+                description={desc.flavor_text_entries?.[0]?.flavor_text}
+                height={pokemon.height}
+                weight={pokemon.weight}
+                abilities={pokemon.abilities}
+                img={pokemon.sprites?.front_shiny ?? pokeball}
+              />
+            </div>
+            <div className="grid md:grid-cols-2 py-5 gap-3">
+              <PokemonStats
+                hp={stats?.[0]?.base_stat}
+                attack={stats?.[1]?.base_stat}
+                defense={stats?.[2]?.base_stat}
+                spAttack={stats?.[3]?.base_stat}
+                spDefense={stats?.[4]?.base_stat}
+                speed={stats?.[5]?.base_stat}
+              />
+              <CategoryCard
+                category="Flame Pokemon"
+                species="Flame Pokemon"
+                type={["fire", "flying"]}
+                generation="I"
+                region="Kanto"
+              />
+            </div>
+            <div className="py-5">
+              <h2 className="font-bold mb-5 text-center">Evolution Line</h2>
+              <div className="md:flex justify-center">
+                <EvolutionLine />
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+    </>
   );
 };
 

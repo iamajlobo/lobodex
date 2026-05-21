@@ -9,6 +9,7 @@ const PokemonStats = ({
     spDefense,
     speed
 }) => {
+    const total = hp+attack+defense+spAttack+spDefense+speed;
     return (
         <div className="border border-gray-200 shadow-md rounded-md p-5">
             <h1 className="font-bold">Base Stats</h1>
@@ -18,7 +19,7 @@ const PokemonStats = ({
             <StatsProgress text="Sp. Attack" attributes={spAttack}/>
             <StatsProgress text="Sp. Defense" attributes={spDefense}/>
             <StatsProgress text="Speed" attributes={speed}/>
-            <h2 className="font-bold">Total     <span>{hp+attack+defense+spAttack+spDefense+speed}</span></h2>
+            <h2 className="font-bold">Total: <span className="font-normal">{total.toString()}</span></h2>
         </div>
     );
 }

@@ -14,10 +14,10 @@ const PokemonDescription = ({
     return(
         <div className="grid md:grid-cols-2 md:p-10">
             <div className="order-2 md:order-1">
-                <h3 className="text-xl">#{pokemonId}</h3>
-                <h1 className="text-5xl font-medium mb-3">{pokemonName}</h1>
+                <h3 className="text-xl">#00{pokemonId}</h3>
+                <h1 className="text-5xl font-medium mb-3">{pokemonName?.toUpperCase()}</h1>
                 <div className="flex gap-1 mb-3">
-                    {types.map((type,index) => (<TypeBadge key={index} type={type}/>))}
+                    {types?.map((type,index) => (<TypeBadge key={index} type={type.type.name}/>))}
                 </div>
                 <p className="leading-6 w-full md:w-90 mb-3">{description}</p>
                 <h5 className="mb-3">
@@ -39,7 +39,7 @@ const PokemonDescription = ({
                         Abilities
                     </span>
                     <br />
-                    {abilities.map((name,index) => (<p key={index}>{name}</p>))}
+                    {abilities?.map((ability,index) => (<p key={index}>{ability.ability.name.toUpperCase()}</p>))}
                 </h5>
             </div>
             <div className="order-1 md:order-2">
