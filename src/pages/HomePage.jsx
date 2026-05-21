@@ -15,7 +15,7 @@ const HomePage = () => {
       <div className="max-w-7xl mx-auto bg-white px-5 py-10">
         <div className="flex justify-between items-center mb-3">
           <h2 className="text-xl font-bold">Browse by Region</h2>
-          <NavLink className="text-red-500 font-medium">View All</NavLink>
+          <NavLink to="/regions" className="text-red-500 font-medium">View All</NavLink>
         </div>
         <div className="md:px-0 grid sm:grid-cols-2 lg:grid-cols-9 gap-5 lg:gap-2">
           {regions.map((region, index) => (
@@ -31,7 +31,7 @@ const HomePage = () => {
       <div className="max-w-7xl mx-auto bg-white p-5">
         <div className="flex justify-between items-center mb-3">
           <h2 className="text-xl font-bold">Browse by Types</h2>
-          <NavLink className="text-red-500 font-medium">View All</NavLink>
+          <NavLink to='/types' className="text-red-500 font-medium">View All</NavLink>
         </div>
         <div className="md:px-0 grid sm:grid-cols-2 lg:grid-cols-9 gap-5 lg:gap-2">
           {pokemonTypes.slice(0,9).map((types, index) => (
