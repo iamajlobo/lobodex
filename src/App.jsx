@@ -6,6 +6,8 @@ import RegionsPage from "./pages/RegionsPage";
 import TypesPage from "./pages/TypesPage";
 import FavoritesPage from "./pages/FavoritesPage";
 import AboutPage from "./pages/AboutPage";
+import PokemonDetailsPage from "./pages/PokemonDetailsPage";
+import PageNotFound from "./pages/PageNotFound";
 
 
 const App = () => {
@@ -19,6 +21,8 @@ const App = () => {
           <Route path='/types' element={<TypesPage/>}/>
           <Route path='/favorites' element={<FavoritesPage/>}/>
           <Route path='/about' element={<AboutPage/>}/>
+          <Route path='/pokemon/:pokemonName' element={<PokemonDetailsPage/>}/>
+          <Route path="*" element={<PageNotFound/>}/>
         </Route>
       </Routes>
     </>
