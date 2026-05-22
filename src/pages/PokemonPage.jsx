@@ -17,7 +17,6 @@ const PokemonPage = () => {
         setLoading(true);
         const result = await fetchAllPokemon(page);
         setPokemons(result);
-        console.log(result);
       };
 
       loadPokemon();

@@ -4,9 +4,9 @@ import PokemonDescription from "../components/PokemonDescription";
 import pokeball from "../assets/images/pokeball.png";
 import PokemonStats from "../components/PokemonStats";
 import CategoryCard from "../components/CategoryCard";
-import EvolutionLine from "../components/EvolutionLine";
 import { useEffect, useState } from "react";
 import { fetchDescription, fetchPokemon } from "../services/pokeapi";
+
 
 const PokemonDetailsPage = () => {
   const [loading, setLoading] = useState(false);
@@ -15,14 +15,15 @@ const PokemonDetailsPage = () => {
   const [stats, setStats] = useState({});
   const { pokemonName } = useParams();
 
+  
+
   useEffect(() => {
     try {
       const loadPokemon = async () => {
         setLoading(true);
         const result = await fetchPokemon(pokemonName);
         const characteristics = await fetchDescription(result.id);
-
-        console.log(result);
+        
         setPokemon(result);
         setDesc(characteristics);
         setStats(result.stats);
@@ -52,7 +53,7 @@ const PokemonDetailsPage = () => {
                 Pokemons
               </NavLink>
               <p>{">"}</p>
-              <NavLink className="hover:underline" to="/data">
+              <NavLink className="hover:underline" to={`/pokemon/${pokemonName}`}>
                 {pokemonName.slice(0, 1).toUpperCase() + pokemonName.slice(1)}
               </NavLink>
               <p>{">"}</p>
@@ -79,18 +80,10 @@ const PokemonDetailsPage = () => {
                 speed={stats?.[5]?.base_stat}
               />
               <CategoryCard
-                category="Flame Pokemon"
-                species="Flame Pokemon"
-                type={["fire", "flying"]}
-                generation="I"
-                region="Kanto"
+                category={desc.genera?.[7]?.genus}
+                type={pokemon.types}
+                generation={desc.generation?.name}
               />
-            </div>
-            <div className="py-5">
-              <h2 className="font-bold mb-5 text-center">Evolution Line</h2>
-              <div className="md:flex justify-center">
-                <EvolutionLine />
-              </div>
             </div>
           </div>
         </section>
