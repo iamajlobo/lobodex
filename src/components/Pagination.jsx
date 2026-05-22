@@ -24,14 +24,14 @@ const Pagination = ({setPage}) => {
           onClick={() => handleOnclick(false)}
           className="bg-red-500 p-3 rounded-md shadow-md hover:cursor-pointer hover:bg-red-500/80"
         >
-          <ChevronLeft color="white" />
+          <ChevronLeft color="white" size={15}/>
         </button>
         {[...Array(pageGroup)].map((_, index) => {
           const pageNumber = startPage + index;
           return (
             <button
               onClick={() => setPage(pageNumber)}
-              className="px-4 py-3 border border-gray-100 shadow-md rounded-md hover:cursor-pointer hover:bg-red-500 hover:text-white"
+              className="px-4 py-3 text-[10px] border border-gray-100 shadow-md rounded-md hover:cursor-pointer hover:bg-red-500 hover:text-white"
               key={index}
             >
               {pageNumber}
@@ -42,7 +42,7 @@ const Pagination = ({setPage}) => {
           onClick={() => handleOnclick(true)}
           className="bg-red-500 p-3 rounded-md shadow-md hover:cursor-pointer hover:bg-red-500/80"
         >
-          <ChevronRight color="white" />
+          <ChevronRight color="white" size={15}/>
         </button>
       </div>
     </div>
