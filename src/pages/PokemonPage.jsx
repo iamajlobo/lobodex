@@ -4,12 +4,13 @@ import PokemonFilter from "../components/PokemonFilter";
 import pokeball from "../assets/images/pokeball.png";
 import Pagination from "../components/Pagination";
 import { useEffect, useState } from "react";
-import { fetchAllPokemon } from "../services/pokeapi";
+import { fetchAllPokemon} from "../services/pokeapi";
 
 const PokemonPage = () => {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
+  
 
   useEffect(() => {
     try {
@@ -27,12 +28,14 @@ const PokemonPage = () => {
     }
   }, [page]);
 
+  
+
   return (
     <section className="bg-white">
       <div className="max-w-7xl mx-auto p-5">
-        <PokemonFilter />
+        <PokemonFilter setPokemons={setPokemons} setLoading={setLoading} loading={loading}/>
         <h2 className="text-sm font-medium py-5">
-          Showing 1-24 of 1025 Pokemon
+          Welcome to Lobodex.
         </h2>
         <div className="md:px-0 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5 lg:gap-2 mb-10">
           {loading ? (
@@ -41,7 +44,7 @@ const PokemonPage = () => {
             pokemons.map((pokemon, index) => (
               <PokemonCard
                 key={index}
-                spriteImage={pokemon.sprites.front_shiny ?? pokeball}
+                spriteImage={pokemon.sprites?.front_shiny ?? pokeball}
                 pokemonID={pokemon.id}
                 pokemonName={pokemon.name}
                 types={pokemon.types}
@@ -49,7 +52,6 @@ const PokemonPage = () => {
             ))
           )}
         </div>
-
         <Pagination setPage={setPage}/>
       </div>
     </section>

@@ -15,12 +15,14 @@ const CategoryCard = ({ category, type, generation }) => {
   return (
     <div className="border border-gray-200 shadow-md rounded-md p-5">
       <h1 className="grid grid-cols-2 py-2">
-        <span>Category:</span>
+        <span>Species:</span>
         <span>{category}</span>
       </h1>
       <h1 className="grid grid-cols-2 py-2">
         <span>Type:</span> 
-        {type?.map((t,index) => <span key={index}>{t.type.name?.toUpperCase()}</span>)}
+        <div>
+          {type?.map((t,index) => <span key={index}>{t.type.name?.toUpperCase() + `${(index == 0 && type.length > 1)? ' | ':''}`}</span>)}
+        </div>
       </h1>
       <h1 className="grid grid-cols-2 py-2">
         <span>Generation:</span> 

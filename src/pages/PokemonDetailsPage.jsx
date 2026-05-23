@@ -37,6 +37,7 @@ const PokemonDetailsPage = () => {
     }
   }, [pokemonName]);
 
+  
   return (
     <>
       {loading ? (

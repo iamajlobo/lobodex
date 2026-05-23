@@ -10,9 +10,9 @@ const PokemonCard = ({ spriteImage = null, pokemonID, pokemonName, types }) => {
       </div>
       <div className="text-center">
         <h3>#00{pokemonID}</h3>
-        <h2 className="font-medium mb-3">{pokemonName.toUpperCase()}</h2>
+        <h2 className="font-medium mb-3">{pokemonName?.toUpperCase()}</h2>
         <div className="flex justify-center gap-1">
-          {types.map((type, index) => (
+          {types?.map((type, index) => (
             <TypeBadge key={index} type={type.type.name}/>
           ))}
         </div>
