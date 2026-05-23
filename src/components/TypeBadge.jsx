@@ -41,7 +41,7 @@ const TypeBadge = ({type}) => {
                                         : "bg-gray-500";
 
     return (
-        <div className={`${mainBg} text-white font-semibold shadow-sm py-1 px-3 text-[12px] rounded-md`}>
+        <div className={`${mainBg} text-[10px] text-white font-semibold shadow-sm py-1 px-3  rounded-md`}>
             {type.toUpperCase()}
         </div>
     );                                    

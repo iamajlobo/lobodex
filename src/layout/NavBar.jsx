@@ -94,22 +94,22 @@ const NavBar = () => {
         className={`${isOpen ? "flex" : "hidden"} w-full md:hidden bg-black py-5 px-5 rounded-lg flex-col justify-between items-center absolute top-16.5 transition duration-700 ease-in-out`}
       >
         <ul className="flex flex-col items-center">
-          <NavLink className="px-10 py-2" to="/">
+          <NavLink onClick={() => setIsOpen(false)} className="px-10 py-2" to="/">
             Home
           </NavLink>
-          <NavLink className="px-10 py-2" to="/pokemons">
+          <NavLink onClick={() => setIsOpen(false)} className="px-10 py-2" to="/pokemons">
             Pokemon
           </NavLink>
-          <NavLink className="px-10 py-2" to="/regions">
+          <NavLink onClick={() => setIsOpen(false)} className="px-10 py-2" to="/regions">
             Regions
           </NavLink>
-          <NavLink className="px-10 py-2" to="/types">
+          <NavLink onClick={() => setIsOpen(false)} className="px-10 py-2" to="/types">
             Types
           </NavLink>
-          <NavLink className="px-10 py-2" to="/favorites">
+          <NavLink onClick={() => setIsOpen(false)} className="px-10 py-2" to="/favorites">
             Favorites
           </NavLink>
-          <NavLink className="px-10 py-2" to="/about">
+          <NavLink onClick={() => setIsOpen(false)} className="px-10 py-2" to="/about">
             About
           </NavLink>
         </ul>

@@ -80,7 +80,7 @@ const PokemonTypesCard = ({ img, type, name, totalPokemon = 0, isTypesPage = fal
   return (
     <>
       {!isTypesPage ? (
-        <div className="text-center border border-gray-100 shadow-md rounded-md hover:shadow-lg hover:scale-103">
+        <div className="text-center border border-gray-100 shadow-md rounded-md hover:cursor-pointer hover:shadow-lg hover:scale-103">
           <div className="p-4">
             <div className={`${bg} p-3 rounded-full`}>
               <img
@@ -93,7 +93,7 @@ const PokemonTypesCard = ({ img, type, name, totalPokemon = 0, isTypesPage = fal
           <h2 className="mb-3 capitalize">{name}</h2>
         </div>
       ) : (
-        <div className="border border-gray-100 shadow-md rounded-md hover:shadow-lg hover:scale-103 flex gap-2 items-center">
+        <div className="border border-gray-100 shadow-md rounded-md hover:cursor-pointer hover:shadow-lg hover:scale-103 flex gap-2 items-center">
           <div className="p-4">
             <div className={`${bg} p-3 rounded-full`}>
               <img
